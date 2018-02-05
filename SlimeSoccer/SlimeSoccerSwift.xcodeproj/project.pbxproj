@@ -1,0 +1,421 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0E14816F2024960B00BD0885 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E14816E2024960B00BD0885 /* AppDelegate.swift */; };
+		0E1481712024960B00BD0885 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E1481702024960B00BD0885 /* GameScene.sks */; };
+		0E1481732024960B00BD0885 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 0E1481722024960B00BD0885 /* Actions.sks */; };
+		0E1481752024960B00BD0885 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1481742024960B00BD0885 /* GameScene.swift */; };
+		0E1481772024960B00BD0885 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1481762024960B00BD0885 /* ViewController.swift */; };
+		0E1481792024960B00BD0885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E1481782024960B00BD0885 /* Assets.xcassets */; };
+		0E14817C2024960B00BD0885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E14817A2024960B00BD0885 /* Main.storyboard */; };
+		0E14818B2024D84F00BD0885 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E14818A2024D84F00BD0885 /* WebSocketManager.swift */; };
+		A5B40CFDA2310EE87E7AD9A6 /* Pods_SlimeSoccerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C599A72413152C697498708B /* Pods_SlimeSoccerSwift.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0E14816B2024960B00BD0885 /* SlimeSoccerSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlimeSoccerSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E14816E2024960B00BD0885 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0E1481702024960B00BD0885 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		0E1481722024960B00BD0885 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		0E1481742024960B00BD0885 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		0E1481762024960B00BD0885 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0E1481782024960B00BD0885 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0E14817B2024960B00BD0885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0E14817D2024960B00BD0885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E14817E2024960B00BD0885 /* SlimeSoccerSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SlimeSoccerSwift.entitlements; sourceTree = "<group>"; };
+		0E14818A2024D84F00BD0885 /* WebSocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebSocketManager.swift; path = ../../../../../Downloads/WebSocketManager.swift; sourceTree = "<group>"; };
+		3B092E229A4D5242FFDD1B3F /* Pods-SlimeSoccerSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlimeSoccerSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlimeSoccerSwift/Pods-SlimeSoccerSwift.release.xcconfig"; sourceTree = "<group>"; };
+		6B52BC08144454B7A855933F /* Pods-SlimeSoccerSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlimeSoccerSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlimeSoccerSwift/Pods-SlimeSoccerSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		C599A72413152C697498708B /* Pods_SlimeSoccerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlimeSoccerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E1481682024960B00BD0885 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5B40CFDA2310EE87E7AD9A6 /* Pods_SlimeSoccerSwift.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E1481622024960B00BD0885 = {
+			isa = PBXGroup;
+			children = (
+				0E14816D2024960B00BD0885 /* SlimeSoccerSwift */,
+				0E14816C2024960B00BD0885 /* Products */,
+				4A2CAD8456F6D84755F48C5F /* Pods */,
+				BA17EC4A2848E85B551A83C8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0E14816C2024960B00BD0885 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0E14816B2024960B00BD0885 /* SlimeSoccerSwift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0E14816D2024960B00BD0885 /* SlimeSoccerSwift */ = {
+			isa = PBXGroup;
+			children = (
+				0E14816E2024960B00BD0885 /* AppDelegate.swift */,
+				0E1481702024960B00BD0885 /* GameScene.sks */,
+				0E1481722024960B00BD0885 /* Actions.sks */,
+				0E1481742024960B00BD0885 /* GameScene.swift */,
+				0E1481762024960B00BD0885 /* ViewController.swift */,
+				0E14818A2024D84F00BD0885 /* WebSocketManager.swift */,
+				0E1481782024960B00BD0885 /* Assets.xcassets */,
+				0E14817A2024960B00BD0885 /* Main.storyboard */,
+				0E14817D2024960B00BD0885 /* Info.plist */,
+				0E14817E2024960B00BD0885 /* SlimeSoccerSwift.entitlements */,
+			);
+			path = SlimeSoccerSwift;
+			sourceTree = "<group>";
+		};
+		4A2CAD8456F6D84755F48C5F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6B52BC08144454B7A855933F /* Pods-SlimeSoccerSwift.debug.xcconfig */,
+				3B092E229A4D5242FFDD1B3F /* Pods-SlimeSoccerSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BA17EC4A2848E85B551A83C8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C599A72413152C697498708B /* Pods_SlimeSoccerSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0E14816A2024960B00BD0885 /* SlimeSoccerSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E1481812024960B00BD0885 /* Build configuration list for PBXNativeTarget "SlimeSoccerSwift" */;
+			buildPhases = (
+				D72ED69BA8483731E98D6D19 /* [CP] Check Pods Manifest.lock */,
+				0E1481672024960B00BD0885 /* Sources */,
+				0E1481682024960B00BD0885 /* Frameworks */,
+				0E1481692024960B00BD0885 /* Resources */,
+				4C0203FE83D3977861FF7A03 /* [CP] Embed Pods Frameworks */,
+				423645AEDF36A4E0B990E1C6 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SlimeSoccerSwift;
+			productName = SlimeSoccerSwift;
+			productReference = 0E14816B2024960B00BD0885 /* SlimeSoccerSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0E1481632024960B00BD0885 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Coletiv;
+				TargetAttributes = {
+					0E14816A2024960B00BD0885 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 0E1481662024960B00BD0885 /* Build configuration list for PBXProject "SlimeSoccerSwift" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0E1481622024960B00BD0885;
+			productRefGroup = 0E14816C2024960B00BD0885 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0E14816A2024960B00BD0885 /* SlimeSoccerSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0E1481692024960B00BD0885 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E1481712024960B00BD0885 /* GameScene.sks in Resources */,
+				0E1481792024960B00BD0885 /* Assets.xcassets in Resources */,
+				0E1481732024960B00BD0885 /* Actions.sks in Resources */,
+				0E14817C2024960B00BD0885 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		423645AEDF36A4E0B990E1C6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlimeSoccerSwift/Pods-SlimeSoccerSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C0203FE83D3977861FF7A03 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SlimeSoccerSwift/Pods-SlimeSoccerSwift-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Birdsong/Birdsong.framework",
+				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Birdsong.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlimeSoccerSwift/Pods-SlimeSoccerSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D72ED69BA8483731E98D6D19 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SlimeSoccerSwift-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E1481672024960B00BD0885 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E1481772024960B00BD0885 /* ViewController.swift in Sources */,
+				0E1481752024960B00BD0885 /* GameScene.swift in Sources */,
+				0E14816F2024960B00BD0885 /* AppDelegate.swift in Sources */,
+				0E14818B2024D84F00BD0885 /* WebSocketManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		0E14817A2024960B00BD0885 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0E14817B2024960B00BD0885 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0E14817F2024960B00BD0885 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0E1481802024960B00BD0885 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		0E1481822024960B00BD0885 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B52BC08144454B7A855933F /* Pods-SlimeSoccerSwift.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = D3V2QHA926;
+				INFOPLIST_FILE = SlimeSoccerSwift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Coletiv.SlimeSoccerSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		0E1481832024960B00BD0885 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B092E229A4D5242FFDD1B3F /* Pods-SlimeSoccerSwift.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = D3V2QHA926;
+				INFOPLIST_FILE = SlimeSoccerSwift/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Coletiv.SlimeSoccerSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0E1481662024960B00BD0885 /* Build configuration list for PBXProject "SlimeSoccerSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E14817F2024960B00BD0885 /* Debug */,
+				0E1481802024960B00BD0885 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0E1481812024960B00BD0885 /* Build configuration list for PBXNativeTarget "SlimeSoccerSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E1481822024960B00BD0885 /* Debug */,
+				0E1481832024960B00BD0885 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0E1481632024960B00BD0885 /* Project object */;
+}
