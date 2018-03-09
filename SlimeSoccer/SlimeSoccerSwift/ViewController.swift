@@ -42,8 +42,9 @@ class ViewController: NSViewController {
         }
       }
     }
-    
-    WebSocketManager.shared.connect(to: "game:lobby_1")
+   
   }
+  
+
 }
 

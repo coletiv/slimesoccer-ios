@@ -14,7 +14,7 @@
 		0E1481772024960B00BD0885 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1481762024960B00BD0885 /* ViewController.swift */; };
 		0E1481792024960B00BD0885 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E1481782024960B00BD0885 /* Assets.xcassets */; };
 		0E14817C2024960B00BD0885 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E14817A2024960B00BD0885 /* Main.storyboard */; };
-		0EFAD0B1202DB45900EE5F72 /* WebSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAD0B0202DB45900EE5F72 /* WebSocketManager.swift */; };
+		0EFAD0B1202DB45900EE5F72 /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFAD0B0202DB45900EE5F72 /* WebSocket.swift */; };
 		A5B40CFDA2310EE87E7AD9A6 /* Pods_SlimeSoccerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C599A72413152C697498708B /* Pods_SlimeSoccerSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +29,7 @@
 		0E14817B2024960B00BD0885 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E14817D2024960B00BD0885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E14817E2024960B00BD0885 /* SlimeSoccerSwift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SlimeSoccerSwift.entitlements; sourceTree = "<group>"; };
-		0EFAD0B0202DB45900EE5F72 /* WebSocketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketManager.swift; sourceTree = "<group>"; };
+		0EFAD0B0202DB45900EE5F72 /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		3B092E229A4D5242FFDD1B3F /* Pods-SlimeSoccerSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlimeSoccerSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlimeSoccerSwift/Pods-SlimeSoccerSwift.release.xcconfig"; sourceTree = "<group>"; };
 		6B52BC08144454B7A855933F /* Pods-SlimeSoccerSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlimeSoccerSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlimeSoccerSwift/Pods-SlimeSoccerSwift.debug.xcconfig"; sourceTree = "<group>"; };
 		C599A72413152C697498708B /* Pods_SlimeSoccerSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlimeSoccerSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +73,7 @@
 				0E1481722024960B00BD0885 /* Actions.sks */,
 				0E1481742024960B00BD0885 /* GameScene.swift */,
 				0E1481762024960B00BD0885 /* ViewController.swift */,
-				0EFAD0B0202DB45900EE5F72 /* WebSocketManager.swift */,
+				0EFAD0B0202DB45900EE5F72 /* WebSocket.swift */,
 				0E1481782024960B00BD0885 /* Assets.xcassets */,
 				0E14817A2024960B00BD0885 /* Main.storyboard */,
 				0E14817D2024960B00BD0885 /* Info.plist */,
@@ -232,7 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E1481772024960B00BD0885 /* ViewController.swift in Sources */,
-				0EFAD0B1202DB45900EE5F72 /* WebSocketManager.swift in Sources */,
+				0EFAD0B1202DB45900EE5F72 /* WebSocket.swift in Sources */,
 				0E1481752024960B00BD0885 /* GameScene.swift in Sources */,
 				0E14816F2024960B00BD0885 /* AppDelegate.swift in Sources */,
 			);
@@ -366,7 +366,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = D3V2QHA926;
+				DEVELOPMENT_TEAM = 6M2ZV62CPD;
 				INFOPLIST_FILE = SlimeSoccerSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Coletiv.SlimeSoccerSwift;
@@ -384,7 +384,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = D3V2QHA926;
+				DEVELOPMENT_TEAM = 6M2ZV62CPD;
 				INFOPLIST_FILE = SlimeSoccerSwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Coletiv.SlimeSoccerSwift;
