@@ -43,92 +43,100 @@ class Object {
   
 }
 
-class Player: Object {
-  
-  var isJumping = false
-  var isMovingRight = false
-  var isMovingLeft = false
-  var remoteControlled = false
-  
-  var id: String
-  
-  var score = 0
-
-  init(with id: String) {
-    self.id = id
-  }
-  
-  func reset() {
-    resetPosition()
-    
-    isJumping = false
-    isMovingRight = false
-    isMovingLeft = false
-    
-    score = 0
-  }
-  
-  func moveRight() {
-    let rightVector = CGVector(dx: 3000, dy: 0)
-    sprite?.physicsBody?.applyForce(rightVector)
-  }
-  
-  func moveLeft() {
-    let leftVector = CGVector(dx: -3000, dy: 0)
-    sprite?.physicsBody?.applyForce(leftVector)
-  }
-  
-  func jump() {
-    if sprite?.position.y ?? 0 > -200 {
-      isJumping = false
-    } else {
-      let jumpVector = CGVector(dx: 0, dy: 7000)
-      sprite?.physicsBody?.applyForce(jumpVector)
-    }
-  }
-  
-  func update() {
-    
-    // Called before each frame is rendered
-    if isJumping {
-      jump()
-    }
-    
-    if isMovingRight {
-      moveRight()
-    }
-    
-    if isMovingLeft {
-      moveLeft()
-    }
-  }
-}
-
 class GameScene: SKScene {
+  
+  // MARK: Properties
   
   var entities = [GKEntity]()
   var graphs = [String : GKGraph]()
   
-  var player1: Player?
-  var player2: Player?
-  var ball: Object?
+  var player1 = Player(withId: "1", name: "RedSlime")
+  var player2 = Player(withId: "2", name: "BlueSlime")
+  var ball = Object()
   
   var scoreLabel: SKLabelNode?
   
+  // MARK: Scene Cycle
+  
   override func sceneDidLoad() {
     
-    player1 = Player(with: "1")
-    player1?.sprite = childNode(withName: "RedSlime") as? SKSpriteNode
+    player1.sprite = childNode(withName: "RedSlime") as? SKSpriteNode
+    player2.sprite = childNode(withName: "BlueSlime") as? SKSpriteNode
     
-    player2 = Player(with: "2")
-    player2?.sprite = childNode(withName: "BlueSlime") as? SKSpriteNode
-    
-    ball = Object()
-    ball?.sprite = childNode(withName: "Ball") as? SKSpriteNode
+    ball.sprite = childNode(withName: "Ball") as? SKSpriteNode
     
     scoreLabel = childNode(withName: "ScoreLabel") as? SKLabelNode
     
-    WebSocket.instance.setUp(with: "http://192.168.1.168:4000/socket/websocket", authenticationPayload: nil)
+    connectSocket()
+  }
+  
+  override func update(_ currentTime: TimeInterval) {
+    
+    let players = localPlayers()
+    
+    for player in players {
+      self.sendActions(with: player)
+    }
+    
+    player1.update()
+    player2.update()
+    
+    if let ballSpritePosition = ball.sprite?.position {
+      
+      let x = ballSpritePosition.x
+      let y = ballSpritePosition.y
+      
+      if x < -480 && y < -155 {
+        player2.score += 1
+        goal()
+      } else if x > 480 && y < -155 {
+        player1.score += 1
+        goal()
+      }
+      
+      let score1 = player1.score
+      let score2 = player2.score
+      scoreLabel?.text = "\(score1) - \(score2)"
+    }
+  }
+}
+
+// MARK: Game Logic
+
+extension GameScene {
+  
+  func remotePlayers() -> [Player] {
+    return [player1, player2].filter {
+      $0.remoteControlled == true
+    }
+  }
+  
+  func localPlayers() -> [Player] {
+    return [player1, player2].filter {
+      $0.remoteControlled != true
+    }
+  }
+  
+  func resetScene() {
+    ball.resetPosition()
+    player1.reset()
+    player2.reset()
+  }
+  
+  func goal() {
+    ball.resetPosition()
+    player1.resetPosition()
+    player2.resetPosition()
+  }
+  
+}
+
+// MARK: Sockets
+
+extension GameScene {
+  
+  func connectSocket() {
+    WebSocket.instance.setup(with: "http://192.168.1.146:4000/socket/websocket")
     WebSocket.instance.connect(with: { [weak self] in
       
       guard
@@ -141,15 +149,6 @@ class GameScene: SKScene {
                                      onJoinSuccess: { (payload) in },
                                      onJoinError: { (payload) in })
     })
-    
-    let isPlayer1 = false
-    if isPlayer1 {
-      player1?.remoteControlled = true
-      player2?.remoteControlled = false
-    } else {
-      player1?.remoteControlled = false
-      player2?.remoteControlled = true
-    }
   }
   
   func channelListeners() -> [WebSocket.ChannelEventListener] {
@@ -166,34 +165,20 @@ class GameScene: SKScene {
         let y = response.payload["y"] as? CGFloat
         else { return }
       
-      let player = weakSelf.remotePlayer()
+      // Move remote players
+      let players = weakSelf.remotePlayers()
       
-      //own messages will be discarded
-      if player.id != id { return }
-      
-      player.isJumping = jump
-      player.isMovingLeft = left
-      player.isMovingRight = right
-      player.sprite?.position.x = x
-      player.sprite?.position.y = y
+      for player in players {
+        if player.id == id {
+          player.isJumping = jump
+          player.isMovingLeft = left
+          player.isMovingRight = right
+          player.sprite?.position.x = x
+          player.sprite?.position.y = y
+        }
+      }
+
     })]
-  }
-  
-  func remotePlayer() -> Player {
-    
-    return (player1?.remoteControlled == true ? player1 : player2)!
-  }
-  
-  func resetScene() {
-    ball?.resetPosition()
-    player1?.reset()
-    player2?.reset()
-  }
-  
-  func goal() {
-    ball?.resetPosition()
-    player1?.resetPosition()
-    player2?.resetPosition()
   }
   
   func sendActions(with player: Player) {
@@ -212,16 +197,40 @@ class GameScene: SKScene {
                                    onError: { (reason) in })
   }
   
+  
+}
+
+// MARK: UI Actions
+
+extension GameScene {
+
+  func playerHasChanged(_ playerId: String) {
+    
+    if playerId == "Both" {
+      player1.remoteControlled = false
+      player2.remoteControlled = false
+    } else {
+      player1.remoteControlled = !(player1.name == playerId)
+      player2.remoteControlled = !(player2.name == playerId)
+    }
+  }
+  
+}
+
+// MARK: Player moves
+
+extension GameScene {
+  
   func player1Moves(with move: Bool, event: NSEvent) {
     
     guard let key = Key(rawValue: event.keyCode) else { return }
     switch key {
     case .W:
-      player1?.isJumping = move
+      player1.isJumping = move
     case .A:
-      player1?.isMovingLeft = move
+      player1.isMovingLeft = move
     case .D:
-      player1?.isMovingRight = move
+      player1.isMovingRight = move
     case .ENTER:
       resetScene()
     default: break
@@ -233,71 +242,36 @@ class GameScene: SKScene {
     guard let key = Key(rawValue: event.keyCode) else { return }
     switch key {
     case .UP:
-      player2?.isJumping = move
+      player2.isJumping = move
     case .LEFT:
-      player2?.isMovingLeft = move
+      player2.isMovingLeft = move
     case .RIGHT:
-      player2?.isMovingRight = move
+      player2.isMovingRight = move
     case .ENTER:
       resetScene()
     default: break
     }
   }
   
-  override func keyUp(with event: NSEvent) {
+  private func movePlayer(with event: NSEvent, move: Bool) {
     
-    let player = remotePlayer()
+    let players = localPlayers()
     
-    if (player.id == player1?.id) {
-      player2Moves(with: false, event: event)
-    } else {
-      player1Moves(with: false, event: event)
+    for player in players {
+      if (player.id == player1.id) {
+        player1Moves(with: move, event: event)
+      } else {
+        player2Moves(with: move, event: event)
+      }
     }
-    
+  }
+  
+  override func keyUp(with event: NSEvent) {
+    movePlayer(with: event, move: false)
   }
   
   override func keyDown(with event: NSEvent) {
-    
-    let player = remotePlayer()
-    
-    if (player.id == player1?.id) {
-      player2Moves(with: true, event: event)
-    } else {
-      player1Moves(with: true, event: event)
-    }
-    
-  }
-  
-  override func update(_ currentTime: TimeInterval) {
-    
-    if !self.player1!.remoteControlled {
-      self.sendActions(with: self.player1!)
-    }
-    if !self.player2!.remoteControlled {
-      self.sendActions(with: self.player2!)
-    }
-    
-    player1?.update()
-    player2?.update()
-    
-    if let ballSpritePosition = ball?.sprite?.position {
-      
-      let x = ballSpritePosition.x
-      let y = ballSpritePosition.y
-      
-      if x < -480 && y < -155 {
-        player2?.score += 1
-        goal()
-      } else if x > 480 && y < -155 {
-        player1?.score += 1
-        goal()
-      }
-      
-      if let score1 = player1?.score,
-        let score2 = player2?.score {
-        scoreLabel?.text = "\(score1) - \(score2)"
-      }
-    }
+    movePlayer(with: event, move: true)
   }
   
 }

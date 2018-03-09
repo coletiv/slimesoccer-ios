@@ -10,51 +10,53 @@ import Birdsong
 
 public class WebSocket: NSObject {
   
-  // MARK: - Web Socket
-  
   public typealias ChannelEventListener = (event: String, callback: (Response) -> ())
   
   // MARK: Constants
-  public static var setStatusEvent = "setStatus"
-  public static var restaurantChannel = "restaurant:"
+  
+  // Time to wait until a reconnect is performed
+  fileprivate static var reconnectInterval = 0.5
   
   // MARK: Vars
-  var host: String = "http://localhost:4000/socket/websocket"
   public var socket: Socket?
-  public var channels: [String : Channel] = [:]
-  public var retryOnDisconnect = true
+  private var host: String = "http://localhost:4000/socket/websocket"
+  fileprivate var channels: [String : Channel] = [:]
+  private var retryOnDisconnect = true
   
   // Singleton
   public static let instance = WebSocket()
   
-  // MARK: Methods
+  // MARK: Socket connection
   
-  public func setUp(with webSocketHost: String?, authenticationPayload: [String: String]?) {
+  public func setup(with webSocketHost: String?, authenticationPayload: [String: String]? = nil) {
     
     if let host = webSocketHost {
       self.host = host
     }
     
-    socket = Socket(url: self.host, params: authenticationPayload)
+    socket = Socket(url: host, params: authenticationPayload)
+    socket?.enableLogging = true
+  }
+  
+  public func connect(_ retryOnDisconnect: Bool = true) {
+    
+    guard let socket = socket else { return }
+    
+    self.retryOnDisconnect = retryOnDisconnect
+    socket.connect()
   }
   
   public func connect(with onConnect: @escaping () -> (), retryOnDisconnect: Bool = true) {
     
-    guard let socket = self.socket else { return }
+    guard let socket = socket else { return }
     
     self.retryOnDisconnect = retryOnDisconnect
     
     socket.onConnect = onConnect
-    socket.onDisconnect = { [weak self] error in
+    socket.onDisconnect = {[weak self] error in
       
       guard let weakSelf = self else { return }
-      
-      //try to reconnect after a delay
-      if weakSelf.retryOnDisconnect == true {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-          socket.connect()
-        }
-      }
+      weakSelf.reconnect()
     }
     
     if !socket.isConnected {
@@ -62,9 +64,21 @@ public class WebSocket: NSObject {
     }
   }
   
+  private func reconnect() {
+    
+    guard let socket = socket else { return }
+    
+    //try to reconnect after a delay
+    if retryOnDisconnect == true {
+      DispatchQueue.main.asyncAfter(deadline: .now() + WebSocket.reconnectInterval) {
+        socket.connect()
+      }
+    }
+  }
+  
   public func disconnect() {
     
-    guard let socket = self.socket else { return }
+    guard let socket = socket else { return }
     
     retryOnDisconnect = false
     socket.disconnect()
@@ -77,7 +91,7 @@ public class WebSocket: NSObject {
 }
 
 
-// MARK: - Channel methods
+// MARK: - Channel
 
 extension WebSocket {
   
@@ -87,16 +101,9 @@ extension WebSocket {
                           onJoinSuccess: @escaping (Socket.Payload) -> (),
                           onJoinError: @escaping (Socket.Payload) -> ()) {
     
-    guard let socket = self.socket else { return }
+    guard let socket = socket else { return }
     
-    //if the channel was already added and has joined/joining state do nothing
-    if let channel = channels[channelId] {
-      if channel.state == .Joined || channel.state == .Joining {
-        return
-      }
-    }
-    
-    let joinChannelBlock: () -> () = { [weak self] in
+    let joinChannelBlock: () -> () = {[weak self] in
       
       guard
         let weakSelf = self
@@ -118,7 +125,7 @@ extension WebSocket {
     
     // Verify if the socket is connected and connect if not
     if !socket.isConnected {
-      self.connect(with: joinChannelBlock)
+      connect(with: joinChannelBlock)
     } else {
       joinChannelBlock()
     }
@@ -137,7 +144,8 @@ extension WebSocket {
         .receive("ok", callback: onSuccess)
         .receive("error", callback: onError)
     } else {
-      
+      // Call error callback when the socket is not connected
+      onError([:])
       socket.connect()
     }
     
@@ -145,12 +153,13 @@ extension WebSocket {
   
   public func leaveChannel(with channelId: String) {
     
-    //TODO - there's a remove method on Socket.swift
+    guard
+      let channel = channels[channelId],
+      let socket = socket
+      else { return }
     
-    guard let channel = channels[channelId] else { return }
-    channel.leave()
+    socket.remove(channel)
   }
   
 }
-
 

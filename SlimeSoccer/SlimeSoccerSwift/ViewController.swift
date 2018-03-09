@@ -12,10 +12,19 @@ import GameplayKit
 
 class ViewController: NSViewController {
   
+  // MARK: IBOutlet
+  
   @IBOutlet var skView: SKView!
+  @IBOutlet weak var playerSelectionComboBox: NSComboBox!
+  
+  // MARK: Properties
+  
+  var gameSceneNode: GameScene?
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    playerSelectionComboBox.selectItem(withObjectValue: "Spectator")
     
     // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
     // including entities and graphs.
@@ -23,6 +32,8 @@ class ViewController: NSViewController {
       
       // Get the SKScene from the loaded GKScene
       if let sceneNode = scene.rootNode as! GameScene? {
+        
+        gameSceneNode = sceneNode
         
         // Copy gameplay related content over to the scene
         sceneNode.entities = scene.entities
@@ -45,6 +56,15 @@ class ViewController: NSViewController {
    
   }
   
-
+  @IBAction func changePlayerComboBox(_ sender: NSComboBox) {
+    
+    let itemIndex = sender.indexOfSelectedItem
+    guard let item = sender.itemObjectValue(at: itemIndex) as? String else {
+      return
+    }
+    
+    gameSceneNode?.playerHasChanged(item)
+  }
+  
 }
 
